@@ -19,7 +19,7 @@ lvim.format_on_save = {
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
@@ -209,6 +209,13 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
+  {
+    "scalameta/nvim-metals",
+    config = function()
+      require("dawidr.metals").config()
+    end,
+  },
+
 }
 table.insert(lvim.plugins, {
   "zbirenbaum/copilot-cmp",
@@ -222,6 +229,23 @@ table.insert(lvim.plugins, {
   end,
 })
 
+local ok, copilot = pcall(require, "copilot")
+if not ok then
+  return
+end
+
+copilot.setup {
+  suggestion = {
+    keymap = {
+      accept = "<c-y>",
+      dismiss = "<m-y>",
+    },
+  },
+}
+
+local opts = { noremap = true, silent = true }
+-- vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
+lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>"
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
