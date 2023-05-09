@@ -216,6 +216,12 @@ lvim.plugins = {
       require("dawidr.metals").config()
     end,
   },
+  {
+    'SirVer/ultisnips'
+  },
+  {
+    'mlaursen/vim-react-snippets'
+  }
 
 }
 table.insert(lvim.plugins, {
@@ -244,7 +250,16 @@ copilot.setup {
   },
 }
 
-local opts = { noremap = true, silent = true }
+require('copilot.suggestion').setup {
+  auto_trigger = true,
+  auto_accept = true,
+  auto_dismiss = true,
+  keymap = {
+    accept = "<c-y>",
+    dismiss = "<m-y>",
+  },
+
+}
 -- vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 lvim.keys.normal_mode["<C-s>"] = "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>"
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
