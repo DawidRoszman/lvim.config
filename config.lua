@@ -210,7 +210,6 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
-<<<<<<< HEAD
   {
     "scalameta/nvim-metals",
     config = function()
@@ -223,14 +222,6 @@ lvim.plugins = {
   {
     'mlaursen/vim-react-snippets'
   }
-=======
-  -- {
-  --   "scalameta/nvim-metals",
-  --   config = function()
-  --     require("dawidr.metals").config()
-  --   end,
-  -- },
->>>>>>> f783de6 (commented scala)
 
 }
 table.insert(lvim.plugins, {
