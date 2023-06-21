@@ -211,6 +211,12 @@ lvim.plugins = {
     end,
   },
   {
+    'SirVer/ultisnips'
+  },
+  {
+    'mlaursen/vim-react-snippets'
+  },
+  {
     "scalameta/nvim-metals",
     config = function()
       require("dawidr.metals").config()
