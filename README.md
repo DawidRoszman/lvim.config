@@ -14,3 +14,5 @@ alias t="tmux attach"
 alias lg="lazygit"
 
 alias cdd='cd ~/ && cd "$(find -type d | fzf)"'
+
+alias bcpp='cmake -S . -B build && bear -- cmake --build build'
